@@ -1,0 +1,15 @@
+# Web Framework
+streamlit>=1.28.0
+
+# AI/ML Framework
+pyautogen>=0.2.0
+autogen
+
+# API and HTTP
+requests>=2.31.0
+
+# Environment Variables (optional, for .env file support)
+python-dotenv>=1.0.0
+
+# Utilities
+typing-extensions>=4.8.0
