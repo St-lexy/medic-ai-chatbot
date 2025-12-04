@@ -1,6 +1,5 @@
 # Web Framework
 streamlit>=1.28.0
-GROQ
 groq
 
 # AI/ML Framework
@@ -15,4 +14,5 @@ python-dotenv>=1.0.0
 
 # Utilities
 typing-extensions>=4.8.0
+
 
