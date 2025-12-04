@@ -1,7 +1,7 @@
 import streamlit as st
 from autogen import AssistantAgent, UserProxyAgent, config_list_from_json
 import os
-groq_key = os.getenv("GROQ_API_KEY")
+groq_key = os.getenv("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")
 
 # Page configuration
 st.set_page_config(
@@ -87,6 +87,9 @@ if "assistant" not in st.session_state:
         st.error(f"Error initializing agents: {str(e)}")
         st.session_state.assistant = None
         st.session_state.user_proxy = None
+        
+if st.session_state.assistant:
+    st.session_state.assistant.reset()
 
 # Header
 col1, col2 = st.columns([8, 2])
@@ -172,6 +175,7 @@ with st.sidebar:
     
     st.subheader("⚙️ Configuration")
     if st.session_state.assistant:
+        st.session_state.assistant.reset()
         st.success("✓ Agents initialized")
     else:
         st.error("✗ Agents not initialized")
@@ -187,4 +191,5 @@ with st.sidebar:
     st.write("✅ Multi-turn dialogue")
 
     st.write(f"Messages in history: {len(st.session_state.messages)}")
+
 
