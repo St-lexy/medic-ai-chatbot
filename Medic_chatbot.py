@@ -1,7 +1,6 @@
 import streamlit as st
 from autogen import AssistantAgent, UserProxyAgent
 import os
-os.environ["GROQ_API_KEY"] = "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"
 
 # Page configuration
 st.set_page_config(
@@ -187,3 +186,4 @@ with st.sidebar:
     st.write("✅ Multi-turn dialogue")
 
     st.write(f"Messages in history: {len(st.session_state.messages)}")
+
