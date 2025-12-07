@@ -1,6 +1,7 @@
 import streamlit as st
-from autogen import AssistantAgent, UserProxyAgent, config_list_from_json
+from autogen import AssistantAgent, UserProxyAgent
 import os
+os.environ["GROQ_API_KEY"] = "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"
 
 # Page configuration
 st.set_page_config(
@@ -60,7 +61,7 @@ if "assistant" not in st.session_state:
         config_list = [
             {
                 "model":  "openai/gpt-oss-20b",
-                "api_key": groq_key,
+                "api_key": os.environ["GROQ_API_KEY"],
                 "base_url": "https://api.groq.com/openai/v1",
                 "tool_choice": "none",
             }
@@ -86,9 +87,6 @@ if "assistant" not in st.session_state:
         st.error(f"Error initializing agents: {str(e)}")
         st.session_state.assistant = None
         st.session_state.user_proxy = None
-        
-if st.session_state.assistant:
-    st.session_state.assistant.reset()
 
 # Header
 col1, col2 = st.columns([8, 2])
@@ -174,7 +172,6 @@ with st.sidebar:
     
     st.subheader("⚙️ Configuration")
     if st.session_state.assistant:
-        st.session_state.assistant.reset()
         st.success("✓ Agents initialized")
     else:
         st.error("✗ Agents not initialized")
@@ -190,6 +187,3 @@ with st.sidebar:
     st.write("✅ Multi-turn dialogue")
 
     st.write(f"Messages in history: {len(st.session_state.messages)}")
-
-
-
