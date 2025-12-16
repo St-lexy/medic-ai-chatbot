@@ -60,7 +60,7 @@ if "assistant" not in st.session_state:
         config_list = [
             {
                 "model":  "openai/gpt-oss-20b",
-                "api_key": st.secrets["groq_key"],
+                "api_key": st.secrets.get("groq_key", None),
                 "base_url": "https://api.groq.com/openai/v1",
                 "tool_choice": "none",
             }
@@ -186,6 +186,7 @@ with st.sidebar:
     st.write("✅ Multi-turn dialogue")
 
     st.write(f"Messages in history: {len(st.session_state.messages)}")
+
 
 
 
